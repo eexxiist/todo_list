@@ -30,7 +30,7 @@ function taskCounter() {
 btnAdd.addEventListener("click", () => {
   if (
     input.value.length &&
-    /^[a-z0-9]{5,10}$/i.test(input.value) &&
+    /^[a-zA-Z0-9А-Яа-я]{5,10}$/i.test(input.value) &&
     container.childNodes.length < 9
   ) {
 
