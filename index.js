@@ -30,7 +30,7 @@ function taskCounter() {
 btnAdd.addEventListener("click", () => {
   if (
     input.value.length &&
-    /^[a-zA-Z0-9А-Яа-я]{5,10}$/i.test(input.value) &&
+    /^[a-zA-Z0-9А-Яа-я\s]{5,30}$/i.test(input.value) &&
     container.childNodes.length < 9
   ) {
 
@@ -65,16 +65,20 @@ btnAdd.addEventListener("click", () => {
 
     checkBox.addEventListener("click", () => {
       taskCounter();
-      if(checkBox.checked){
-        newLabel.classList.add("todo_checked");
-      }else{
-        newLabel.classList.add("todo");
-      }
     });
+
+    checkBox.onchange = () => {
+      if(checkBox.checked){
+        newLabel.style.backgroundColor = "#99DF90";
+      }else{
+        newLabel.style.backgroundColor = "#DACCE2";
+      }
+    }
     
 
     
     container.appendChild(newLabel);
+    input.value = '';
     taskCounter();
   }
 });
