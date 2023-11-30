@@ -27,6 +27,10 @@ body {
     border: 1px solid #DACCE2;
     border-radius: 5px;
   }
+
+  input:focus{
+    outline: none;
+  }
   
   button {
     padding: 8px;
@@ -37,6 +41,22 @@ body {
     border-radius: 5px;
   }
   
+
+  .error_message{
+    position: absolute;
+    display: none;
+    width: 60%;
+    text-align: center;
+    padding: 20px;
+    background-color: #e86565;
+    border-radius: 5px;
+    right: 0;
+    bottom: 10vh;
+    left: 0;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
   .todo {
     display: flex;
     align-items: center;

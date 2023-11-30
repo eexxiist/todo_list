@@ -4,81 +4,30 @@
 
 // Можно добавить только до 10 элементов
 
+import createTask from "./utils/Task.js";
+
 const container = document.getElementById("container"),
   input = document.getElementById("input"),
   btnAdd = document.getElementById("button_add"),
-  btnDelete = document.getElementById("button_delete"),
-  taskCount = document.getElementById("task_count");
+  taskCount = document.getElementById("task_count"),
+  error_message = document.getElementById("error_message");
 
-function taskCounter() {
-  let checkedBoxes = document.querySelectorAll(".todo__state");
-
-  let checkedCount = Array.from(checkedBoxes).reduce((acc, item) => {
-      if (item.checked) {
-        return acc + 1;
-      }
-
-      return acc;
-    }, 0),
-    uncheckedCount = Array.from(checkedBoxes).length - checkedCount;
-
-  taskCount.innerText = `${checkedCount} задач выполнено и ${uncheckedCount} осталось`;
-}
-
-
-
-btnAdd.addEventListener("click", () => {
-  if (
-    input.value.length &&
-    /^[a-zA-Z0-9А-Яа-я\s]{5,30}$/i.test(input.value) &&
-    container.childNodes.length < 9
-  ) {
-
-    const newLabel = document.createElement("label"),
-      deleteButtonItem = document.createElement("button"),
-      checkBox = document.createElement("input"),
-      textContainer = document.createElement("div");
-    
-    // Checkbox insert
-    checkBox.type = "checkbox";
-    checkBox.classList.add("todo__state");
-    newLabel.appendChild(checkBox);
-
-    // Text insert
-    textContainer.classList.add("todo__text");
-    textContainer.textContent = input.value;
-    newLabel.appendChild(textContainer);
-
-    // Delete insert
-    deleteButtonItem.innerText = "x";
-    deleteButtonItem.classList.add("list-item_button");
-    newLabel.appendChild(deleteButtonItem);
-    
-
-
-    newLabel.classList.add("todo");
-
-    deleteButtonItem.addEventListener("click", () => {
-      container.removeChild(newLabel);
-      taskCounter();
-    });
-
-    checkBox.addEventListener("click", () => {
-      taskCounter();
-    });
-
-    checkBox.onchange = () => {
-      if(checkBox.checked){
-        newLabel.style.backgroundColor = "#99DF90";
-      }else{
-        newLabel.style.backgroundColor = "#DACCE2";
-      }
-    }
-    
-
-    
-    container.appendChild(newLabel);
-    input.value = '';
-    taskCounter();
+input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    createTask(input, container, taskCount);
   }
+
+  input.style.border = "1px solid grey";
+  error_message.innerText = "";
+  error_message.style.display = "none";
 });
+
+btnAdd.addEventListener("click", () =>
+  createTask(input, container, taskCount, error_message)
+);
+
+error_message.addEventListener('click', () => {
+  error_message.style.display = 'none';
+  input.style.border = "1px solid grey";
+  error_message.innerText = "";
+})
