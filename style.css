@@ -90,4 +90,45 @@ body {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(227, 73, 73, 0.5);
   }
+
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      margin: 20px auto;
+    }
+  
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    #task_count {
+      font-size: 0.8em;
+    }
+  
+    input {
+      width: 80%;
+      margin: 8px 0;
+    }
+  
+    button {
+      width: 80%;
+    }
+  
+    .error_message {
+      width: 80%;
+    }
+  
+    .todo {
+      font-size: 0.9em;
+      padding: 6px;
+    }
+  
+    .todo__state {
+      transform: scale(1.2);
+    }
+    
+    .list-item_button {
+      padding: 6px 8px;
+    }
+  }
   
