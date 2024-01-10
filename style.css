@@ -58,6 +58,7 @@ body {
   }
 
   .todo {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -68,7 +69,8 @@ body {
   }
   
   .todo__state {
-    margin-left: 6px;
+    position: absolute;
+    left: 3%;
     transform: scale(1.8);
   }
   
@@ -91,48 +93,49 @@ body {
     box-shadow: 0 0 10px rgba(227, 73, 73, 0.5);
   }
 
-@media only screen and (max-width: 600px) {
-  .container {
-    margin: 20px auto;
-    padding: 0 10px;
-  }
+  @media only screen and (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
 
-  h1 {
-    font-size: 1.5em;
-  }
+    h1 {
+        font-size: 1.5em;
+    }
 
-  #task_count {
-    font-size: 0.8em;
-  }
+    #task_count {
+        font-size: 0.8em;
+    }
 
-  input {
-    width: calc(100% - 16px);
-    margin: 8px 0px;
-    box-sizing: border-box;
-  }
+    input {
+        width: calc(100% - 16px);
+        margin: 8px 0px;
+        box-sizing: border-box;
+    }
 
-  button {
-    width: calc(100% - 16px);
-    box-sizing: border-box;
-  }
+    button {
+        width: calc(100% - 16px);
+        box-sizing: border-box;
+    }
 
-  .error_message {
-    width: 100%;
-    box-sizing: border-box;
-  }
+    .error_message {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-  .todo {
-    font-size: 0.9em;
-    padding: 6px;
-  }
+    .todo {
+        font-size: 0.9em;
+        padding: 6px;
+    }
 
-  .todo__state {
-    transform: scale(1.5);
-  }
-  
-  .list-item_button {
-    width: auto;
-  }
+    .todo__state {
+      left: -40%;
+        transform: scale(1.5);
+    }
+
+    .list-item_button {
+        width: auto;
+    }
 }
 
   
